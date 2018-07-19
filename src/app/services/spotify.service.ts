@@ -14,16 +14,28 @@ export class SpotifyService {
     console.log('Spotify Service Ready!');
   }
 
-  // MÉTODO para generar la petición de los últimos lanzamientos de Spotify, con la petición de la API
+  // Servicio para generar la petición de los últimos lanzamientos de Spotify, con la petición de la API
   getNewReleases() {
 
     // Creamos una constante para mandar los datos de la cabecera que necesita la petición
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQCwCoLHGhjh2fsVspULGmP_98N8DvI2KlhOKcU_GwmNY1qE9wj39259zKn9II_XlJ4Ig3egt8Rr2SixI9c'
+      'Authorization': 'Bearer BQBwktlEhDWWRYPVzxlQ53-vro2wGOrXr9BkXiEDbtsTQatYQ-9GBhXVM1ApGOg6qZWFySMocMAYoU8Cz0U'
     });
 
     // Se realiza la peticion, pasándole la URL y los datos de la cabecera
     return this.http.get('https://api.spotify.com/v1/browse/new-releases', { headers });
+  }
+
+  // Servicio para buscar artista que recibe el término de búsqueda
+  getArtista(termino: string) {
+
+    // Creamos una constante para mandar los datos de la cabecera que necesita la petición
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer BQBwktlEhDWWRYPVzxlQ53-vro2wGOrXr9BkXiEDbtsTQatYQ-9GBhXVM1ApGOg6qZWFySMocMAYoU8Cz0U'
+    });
+
+    // Se realiza la peticion, pasándole la URL en forma de literal con el término de búsqueda y los datos de la cabecera
+    return this.http.get(`https://api.spotify.com/v1/search?q=${termino}&type=artist&limit=15`, { headers });
   }
 
 }
