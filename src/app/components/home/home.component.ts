@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-// Se importa HttpClient y se usa en el constructor
-import { HttpClient } from '@angular/common/http';
 
 // Se importa el Servicio que va a usar el componente y se usa en el constructor
 import { SpotifyService } from '../../services/spotify.service';
+
 
 @Component({
   selector: 'app-home',
@@ -11,9 +10,16 @@ import { SpotifyService } from '../../services/spotify.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private http: HttpClient,
-              private _spotifyService: SpotifyService) {
-    this._spotifyService.getNewReleases();
+  // Se crea una propiedad
+  nuevasCanciones: any [] = [];
+
+  constructor(private _spotifyService: SpotifyService) {
+
+    // En el constructor se llama al método getNewReleases del servicio que trae información del Spotify
+    this._spotifyService.getNewReleases().subscribe((respuesta: any) => {
+      this.nuevasCanciones = respuesta.albums.items;
+      console.log(this.nuevasCanciones);
+    });
   }
 
   ngOnInit() {

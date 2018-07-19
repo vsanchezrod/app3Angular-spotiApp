@@ -19,13 +19,11 @@ export class SpotifyService {
 
     // Creamos una constante para mandar los datos de la cabecera que necesita la petición
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQBo6MJz_EXCbTJ9raEwi0-IyDiat4iVQCVDhQtAPNAMu_oGlYT9YIo1O2VX1k-3RiK2fL66PNUR1fCRHaM'
+      'Authorization': 'Bearer BQCwCoLHGhjh2fsVspULGmP_98N8DvI2KlhOKcU_GwmNY1qE9wj39259zKn9II_XlJ4Ig3egt8Rr2SixI9c'
     });
 
     // Se realiza la peticion, pasándole la URL y los datos de la cabecera
-    this.http.get('https://api.spotify.com/v1/browse/new-releases', { headers }).subscribe((respuesta: any) => {
-      console.log(respuesta);
-    });
+    return this.http.get('https://api.spotify.com/v1/browse/new-releases', { headers });
   }
 
 }
