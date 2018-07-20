@@ -17,8 +17,7 @@ export class HomeComponent implements OnInit {
 
     // En el constructor se llama al método getNewReleases del servicio que trae información del Spotify
     this._spotifyService.getNewReleases().subscribe((respuesta: any) => {
-      this.nuevasCanciones = respuesta.albums.items;
-      console.log(this.nuevasCanciones);
+      this.nuevasCanciones = respuesta;
     });
   }
 
