@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 // Se importa el Servicio que va a usar el componente y se usa en el constructor
 import { SpotifyService } from '../../services/spotify.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
