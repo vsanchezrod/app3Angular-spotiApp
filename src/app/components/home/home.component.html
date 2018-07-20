@@ -1,2 +1,4 @@
-<!-- Va a recibir la información items-->
+<app-loading *ngIf="loading"></app-loading>
+
+<!-- Va a enviar a la variable del componente hijo (items) el valor de nuevasCanciones-->
 <app-tarjetas [items]="nuevasCanciones"></app-tarjetas>

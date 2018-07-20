@@ -11,13 +11,20 @@ export class HomeComponent implements OnInit {
 
   // Se crea una propiedad
   nuevasCanciones: any [] = [];
+  loading: boolean;
 
   constructor(private _spotifyService: SpotifyService) {
+
+    // Se inicializa el loading a true cuando están cargando los datos
+    this.loading = true;
 
     // En el constructor se llama al método getNewReleases del servicio que trae información del Spotify
     this._spotifyService.getNewReleases().subscribe((respuesta: any) => {
       this.nuevasCanciones = respuesta;
+      // Se cambia el loading a false cuando ya se ha obtenido la respuesta de la petición
+      this.loading = false;
     });
+
   }
 
   ngOnInit() {
