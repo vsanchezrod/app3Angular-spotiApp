@@ -26,7 +26,7 @@ export class SpotifyService {
     const url = `https://api.spotify.com/v1/${query}`;
 
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQAzO0TuROb_kb1COqeyH0osBTRFPY9n-tFWFjbbU1pdBEox9XLQobFXC48g_ir4eewudD5WCyHM30SEvLk'
+      'Authorization': 'Bearer BQCNpDdpMFfJ8xgu0NZ3O5QPdvV00vn-BfL2UBFcyjrrMfNKZBidNQ0Zet_5m8z5FKeKEsP98cfiCUXOlUU'
     });
 
     return this.http.get(url , {headers});
@@ -47,11 +47,26 @@ export class SpotifyService {
 
   }
 
-  // Servicio para buscar artista que recibe el término de búsqueda
-  getArtista(termino: string) {
+  // Servicio para buscar artistas que recibe el término de búsqueda
+  getArtistas(termino: string) {
 
     // Optimización igual q en el método getNewReleases
     return this.getQuery(`search?q=${termino}&type=artist&limit=15`).pipe( map(respuesta => respuesta['artists'].items));
+
+  }
+
+  // Servicio para buscar un artista con su id
+  getArtista(id: string) {
+
+    // No se usa pipe (map()) porque la información viene tal cual se necesita
+    return this.getQuery(`artists/${id}`);
+
+  }
+
+  getTopTracks(id: string) {
+
+    // Se usa pipe (map()) porque se necesitan las canciones q vienen dentro del objeto de respuesta
+    return this.getQuery(`artists/${id}/top-tracks?country=us`).pipe(map(respuesta => respuesta['tracks']));
 
   }
 

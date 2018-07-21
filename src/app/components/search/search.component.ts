@@ -17,7 +17,7 @@ export class SearchComponent {
   // Método buscar artista y recibe un string para la busqueda
   buscar(termino: string) {
     this.loading = true;
-    this._spotifyService.getArtista(termino).subscribe( (respuesta: any ) => {
+    this._spotifyService.getArtistas(termino).subscribe( (respuesta: any ) => {
       this.artistas = respuesta;
       this.loading = false;
     });

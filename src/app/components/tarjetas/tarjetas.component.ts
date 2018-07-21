@@ -35,6 +35,7 @@ export class TarjetasComponent {
       artistaID = item.artists[0].id;
     }
 
+    // Se usan los [] para poder pasarle el parámetro de la ID
     this.router.navigate(['/artista', artistaID]);
   }
 
